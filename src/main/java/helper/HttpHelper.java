@@ -25,11 +25,10 @@ public class HttpHelper {
 			.body();
 	}
 
-	public String sendPOST(final String solution) throws IOException, InterruptedException {
-		final String jsonSolution = String.format("{\"token\":\"%s\"}", solution);
+	public String sendPOST(final String solutionJson) throws IOException, InterruptedException {
 		final HttpRequest request = HttpRequest
 			.newBuilder(URI.create(helper.UrlHelper.getSolutionUrl(challengeNumber)))
-			.POST(HttpRequest.BodyPublishers.ofString(jsonSolution))
+			.POST(HttpRequest.BodyPublishers.ofString(solutionJson))
 			.build();
 		return HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString())
 			.body();

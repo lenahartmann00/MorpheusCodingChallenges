@@ -1,7 +1,9 @@
+import org.openjdk.jmh.Main;
+
 public class BenchmarkRunner {
 
 	public static void main(String[] args) throws Exception {
-		org.openjdk.jmh.Main.main(args);
+		Main.main(args);
 	}
 
 }
