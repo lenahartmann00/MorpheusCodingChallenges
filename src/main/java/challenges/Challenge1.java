@@ -1,8 +1,12 @@
 package challenges;
 
-import helper.HttpHelper;
+import logic.helper.HttpHelper;
 import java.io.IOException;
 
+/**
+ * Hint: This challenge does not use the @link{ChallengeAbstract.class} since the Get Response from
+ * the server is a plain number and not in json format on which the abstraction is based on
+ */
 public class Challenge1 {
 
 	public static void challengeOne() throws IOException, InterruptedException {

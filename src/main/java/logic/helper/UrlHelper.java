@@ -1,4 +1,4 @@
-package helper;
+package logic.helper;
 
 public final class UrlHelper {
 
