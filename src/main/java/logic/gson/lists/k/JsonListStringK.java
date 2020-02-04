@@ -1,14 +1,14 @@
-package logic.gson.lists;
+package logic.gson.lists.k;
 
 import java.util.List;
 import logic.gson.JsonModel;
 
-public class JsonListString implements JsonModel {
+public class JsonListStringK implements JsonModel {
 
 	private int k;
 	private List<String> list;
 
-	public JsonListString(int k, List<String> list) {
+	public JsonListStringK(int k, List<String> list) {
 		this.k = k;
 		this.list = list;
 	}

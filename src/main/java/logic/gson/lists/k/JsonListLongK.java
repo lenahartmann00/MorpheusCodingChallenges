@@ -1,19 +1,19 @@
-package logic.gson.lists;
+package logic.gson.lists.k;
 
 import java.util.List;
 import logic.gson.JsonModel;
 
-public class JsonListLong implements JsonModel {
+public class JsonListLongK implements JsonModel {
 
-	private long k;
+	private int k;
 	private List<Long> list;
 
-	public JsonListLong(long k, List<Long> list) {
+	public JsonListLongK(int k, List<Long> list) {
 		this.k = k;
 		this.list = list;
 	}
 
-	public long getK() {
+	public int getK() {
 		return k;
 	}
 
