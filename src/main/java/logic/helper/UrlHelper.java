@@ -14,4 +14,12 @@ public final class UrlHelper {
 		return BASE_URL + "/solutions/" + challengeNumber + "/";
 	}
 
+	public static String getChallengeUrl(final int challengeNumber, final String additionalPath){
+		return getChallengeUrl(challengeNumber) + additionalPath +"/";
+	}
+
+	public static String getSolutionUrl(final int challengeNumber, final String additionalPath){
+		return getSolutionUrl(challengeNumber) + additionalPath + "/";
+	}
+
 }

@@ -19,7 +19,7 @@ public class HttpHelper {
 
 	public String sendGET() throws IOException, InterruptedException {
 		final HttpRequest request = HttpRequest
-			.newBuilder(URI.create(logic.helper.UrlHelper.getChallengeUrl(challengeNumber)))
+			.newBuilder(URI.create(UrlHelper.getChallengeUrl(challengeNumber)))
 			.build();
 		return HTTP_CLIENT.send(request, BodyHandlers.ofString())
 			.body();
@@ -27,7 +27,7 @@ public class HttpHelper {
 
 	public String sendPOST(final String solutionJson) throws IOException, InterruptedException {
 		final HttpRequest request = HttpRequest
-			.newBuilder(URI.create(logic.helper.UrlHelper.getSolutionUrl(challengeNumber)))
+			.newBuilder(URI.create(UrlHelper.getSolutionUrl(challengeNumber)))
 			.POST(HttpRequest.BodyPublishers.ofString(solutionJson))
 			.build();
 		return HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString())

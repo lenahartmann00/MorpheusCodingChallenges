@@ -1,19 +1,16 @@
 package challenges;
 
-import logic.helper.HttpHelper;
-import java.io.IOException;
+import logic.gson.tokens.JsonTokenString;
+import logic.challenges.impl.AbstractStringChallenge;
 
-/**
- * Hint: This challenge does not use the @link{ChallengeAbstract.class} since the Get Response from
- * the server is a plain number and not in json format on which the abstraction is based on
- */
-public class Challenge1 {
+public class Challenge1 extends AbstractStringChallenge<JsonTokenString> {
 
-	public static void challengeOne() throws IOException, InterruptedException {
-		final HttpHelper httpHelper = new HttpHelper(1);
-		final String get = httpHelper.sendGET();
-		final String solutionJson = String.format("{\"token\":\"%s\"}", get);
-		System.out.println(httpHelper.sendPOST(solutionJson));
+	public Challenge1() {
+		super(1);
 	}
 
+	@Override
+	protected JsonTokenString solveChallenge(final String challenge) {
+		return new JsonTokenString(challenge);
+	}
 }
