@@ -5,7 +5,7 @@ import logic.gson.JsonModel;
 
 public class JsonListLongK implements JsonModel {
 
-	private int k;
+	private long k;
 	private List<Long> list;
 
 	public JsonListLongK(int k, List<Long> list) {
@@ -13,7 +13,7 @@ public class JsonListLongK implements JsonModel {
 		this.list = list;
 	}
 
-	public int getK() {
+	public long getK() {
 		return k;
 	}
 
