@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import logic.challenges.AbstractChallenge;
 import logic.gson.JsonModel;
+import logic.helper.HttpHelper;
 
 /**
  * Represents a {@link AbstractChallenge} where the receiving challenge from the server is send in
@@ -33,7 +34,7 @@ public abstract class AbstractJsonChallenge<C extends JsonModel, S extends JsonM
 	 */
 	@Override
 	protected C receiveChallenge() throws IOException, InterruptedException {
-		final String jsonChallenge = httpHelper.sendGET();
+		final String jsonChallenge = HttpHelper.sendGET(challengeNumber);
 		return new GsonBuilder().create()
 			.fromJson(jsonChallenge, challengeClass);
 	}

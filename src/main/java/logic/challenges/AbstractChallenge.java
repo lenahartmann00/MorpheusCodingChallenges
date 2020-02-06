@@ -22,7 +22,7 @@ import logic.helper.HttpHelper;
  */
 public abstract class AbstractChallenge<C, S extends JsonModel> {
 
-	protected final HttpHelper httpHelper;
+	protected final int challengeNumber;
 
 	/**
 	 * The number of the current challenge. It is used to reference the correct server url.
@@ -30,7 +30,7 @@ public abstract class AbstractChallenge<C, S extends JsonModel> {
 	 * @param challengeNumber number of the current challenge
 	 */
 	public AbstractChallenge(int challengeNumber) {
-		this.httpHelper = new HttpHelper(challengeNumber);
+		this.challengeNumber = challengeNumber;
 	}
 
 	/**
@@ -70,6 +70,6 @@ public abstract class AbstractChallenge<C, S extends JsonModel> {
 	 */
 	private String getResponse(final S solution) throws IOException, InterruptedException {
 		final String json = new GsonBuilder().create().toJson(solution);
-		return httpHelper.sendPOST(json);
+		return HttpHelper.sendPOST(challengeNumber, json);
 	}
 }

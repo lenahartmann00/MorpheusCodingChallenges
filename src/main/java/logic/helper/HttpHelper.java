@@ -15,18 +15,17 @@ public class HttpHelper {
 	private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
 	private static final HttpRequest.Builder HTTP_BUILDER = HttpRequest.newBuilder();
 
-	private final int challengeNumber;
-
-	public HttpHelper(final int challengeNumber) {
-		this.challengeNumber = challengeNumber;
+	private HttpHelper() {
 	}
 
 	/**
 	 * Sends a GET request to the server for receiving the challenge data.
 	 *
+	 * @param challengeNumber number of the challenge
 	 * @return response of the server
 	 */
-	public String sendGET() throws IOException, InterruptedException {
+	public static String sendGET(final int challengeNumber)
+		throws IOException, InterruptedException {
 		final HttpRequest request = HTTP_BUILDER
 			.uri(URI.create(UrlHelper.getChallengeUrl(challengeNumber)))
 			.build();
@@ -38,11 +37,13 @@ public class HttpHelper {
 	 * Sends a POST request to the server that holds the solution as a String. Note: the given
 	 * String has to be in the expected format of the server.
 	 *
-	 * @param solutionJson solution of the challenge that is formatted as the server expects it to
-	 *                     be.
+	 * @param challengeNumber number of the challenge
+	 * @param solutionJson    solution of the challenge that is formatted as the server expects it
+	 *                        to be.
 	 * @return response of the server
 	 */
-	public String sendPOST(final String solutionJson) throws IOException, InterruptedException {
+	public static String sendPOST(final int challengeNumber, final String solutionJson)
+		throws IOException, InterruptedException {
 		final HttpRequest request = HTTP_BUILDER
 			.uri(URI.create(UrlHelper.getSolutionUrl(challengeNumber)))
 			.POST(HttpRequest.BodyPublishers.ofString(solutionJson))

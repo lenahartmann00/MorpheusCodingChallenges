@@ -3,6 +3,7 @@ package logic.challenges.impl;
 import java.io.IOException;
 import logic.challenges.AbstractChallenge;
 import logic.gson.JsonModel;
+import logic.helper.HttpHelper;
 
 /**
  * Represents a {@link AbstractChallenge} where the receiving challenge from the server is send as a
@@ -25,7 +26,7 @@ public abstract class AbstractStringChallenge<S extends JsonModel>
 	 */
 	@Override
 	protected String receiveChallenge() throws IOException, InterruptedException {
-		return httpHelper.sendGET();
+		return HttpHelper.sendGET(challengeNumber);
 	}
 
 }
