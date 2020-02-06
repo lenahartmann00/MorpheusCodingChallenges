@@ -8,7 +8,7 @@ import org.openjdk.jmh.Main;
 public class BenchmarkRunner {
 
 	public static void main(String[] args) throws Exception {
-		//Main.main(args);
+//		Main.main(args);
 		final Challenge2 challenge2 = new Challenge2();
 		System.out.println(challenge2.benchmarkChallenge());
 	}
