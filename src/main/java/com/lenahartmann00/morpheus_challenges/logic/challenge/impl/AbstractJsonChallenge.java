@@ -1,10 +1,10 @@
 package com.lenahartmann00.morpheus_challenges.logic.challenge.impl;
 
 import com.google.gson.GsonBuilder;
-import java.io.IOException;
 import com.lenahartmann00.morpheus_challenges.logic.challenge.AbstractChallenge;
 import com.lenahartmann00.morpheus_challenges.logic.gson.JsonModel;
 import com.lenahartmann00.morpheus_challenges.logic.helper.HttpHelper;
+import java.io.IOException;
 
 /**
  * Represents a {@link AbstractChallenge} where the receiving challenge from the server is send in

@@ -1,8 +1,6 @@
 package com.lenahartmann00.morpheus_challenges.challenges;
 
 import com.lenahartmann00.morpheus_challenges.logic.challenge.impl.AbstractJsonChallenge;
-import com.lenahartmann00.morpheus_challenges.logic.gson.lists.JsonList;
-import com.lenahartmann00.morpheus_challenges.logic.gson.lists.JsonListK;
 import com.lenahartmann00.morpheus_challenges.logic.gson.lists.impl.JsonListKLong;
 import com.lenahartmann00.morpheus_challenges.logic.gson.tokens.impl.JsonTokenInt;
 

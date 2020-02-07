@@ -1,9 +1,9 @@
 package com.lenahartmann00.morpheus_challenges.logic.challenge;
 
 import com.google.gson.GsonBuilder;
-import java.io.IOException;
 import com.lenahartmann00.morpheus_challenges.logic.gson.JsonModel;
 import com.lenahartmann00.morpheus_challenges.logic.helper.HttpHelper;
+import java.io.IOException;
 
 /**
  * This class represents and executes the steps that have to be done every time when solving a

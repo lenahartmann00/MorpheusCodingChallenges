@@ -10,7 +10,7 @@ import java.net.http.HttpResponse.BodyHandlers;
 /**
  * Helper class that is responsible for sending http requests to the server.
  */
-public class HttpHelper {
+public final class HttpHelper {
 
 	private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
 
