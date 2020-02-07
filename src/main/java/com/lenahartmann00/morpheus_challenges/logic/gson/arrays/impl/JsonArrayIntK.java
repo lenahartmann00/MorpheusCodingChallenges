@@ -1,4 +1,4 @@
-package com.lenahartmann00.morpheus_challenges.logic.gson.arrays.k;
+package com.lenahartmann00.morpheus_challenges.logic.gson.arrays.impl;
 
 import com.lenahartmann00.morpheus_challenges.logic.gson.JsonModel;
 

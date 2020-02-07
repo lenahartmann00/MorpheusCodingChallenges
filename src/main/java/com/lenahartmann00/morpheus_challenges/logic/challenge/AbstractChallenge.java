@@ -12,7 +12,7 @@ import com.lenahartmann00.morpheus_challenges.logic.helper.HttpHelper;
  *     <li>receiving the challenge data (GET request) {@link #receiveChallenge()}</li>
  *     <li>solving the challenge {@link #solveChallenge(Object)}</li>
  *     <li>sending the solution as a POST request to the server and returning the response
- *         {@link #getResponse(JsonModel)}</li>
+ *         {@link #sendSolution(JsonModel)}</li>
  * </ol>
  * The method responsible for executing those steps is {@link #benchmarkChallenge()}.
  *
@@ -42,7 +42,7 @@ public abstract class AbstractChallenge<C, S extends JsonModel> {
 	public String benchmarkChallenge() throws IOException, InterruptedException {
 		final C challenge = receiveChallenge();
 		final S solution = solveChallenge(challenge);
-		return getResponse(solution);
+		return sendSolution(solution);
 	}
 
 	/**
@@ -68,7 +68,7 @@ public abstract class AbstractChallenge<C, S extends JsonModel> {
 	 * @param solution solution data object that represents the requested json format
 	 * @return response of the server
 	 */
-	private String getResponse(final S solution) throws IOException, InterruptedException {
+	private String sendSolution(final S solution) throws IOException, InterruptedException {
 		final String json = new GsonBuilder().create().toJson(solution);
 		return HttpHelper.sendPOST(challengeNumber, json);
 	}

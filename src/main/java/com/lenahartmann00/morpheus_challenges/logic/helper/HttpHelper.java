@@ -13,7 +13,6 @@ import java.net.http.HttpResponse.BodyHandlers;
 public class HttpHelper {
 
 	private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
-	private static final HttpRequest.Builder HTTP_BUILDER = HttpRequest.newBuilder();
 
 	private HttpHelper() {
 	}
@@ -26,7 +25,7 @@ public class HttpHelper {
 	 */
 	public static String sendGET(final int challengeNumber)
 		throws IOException, InterruptedException {
-		final HttpRequest request = HTTP_BUILDER
+		final HttpRequest request = HttpRequest.newBuilder()
 			.uri(URI.create(UrlHelper.getChallengeUrl(challengeNumber)))
 			.build();
 		return HTTP_CLIENT.send(request, BodyHandlers.ofString())
@@ -44,7 +43,7 @@ public class HttpHelper {
 	 */
 	public static String sendPOST(final int challengeNumber, final String solutionJson)
 		throws IOException, InterruptedException {
-		final HttpRequest request = HTTP_BUILDER
+		final HttpRequest request = HttpRequest.newBuilder()
 			.uri(URI.create(UrlHelper.getSolutionUrl(challengeNumber)))
 			.POST(HttpRequest.BodyPublishers.ofString(solutionJson))
 			.build();
