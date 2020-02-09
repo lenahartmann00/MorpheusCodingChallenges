@@ -1,7 +1,7 @@
 package com.lenahartmann00.morpheus_challenges.logic.challenge.impl;
 
 import com.lenahartmann00.morpheus_challenges.logic.challenge.AbstractChallenge;
-import com.lenahartmann00.morpheus_challenges.logic.gson.JsonModel;
+import com.lenahartmann00.morpheus_challenges.model.json.JsonModel;
 import com.lenahartmann00.morpheus_challenges.logic.helper.HttpHelper;
 import java.io.IOException;
 

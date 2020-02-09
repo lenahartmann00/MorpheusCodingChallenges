@@ -1,8 +1,8 @@
 package com.lenahartmann00.morpheus_challenges.challenges;
 
 import com.lenahartmann00.morpheus_challenges.logic.challenge.impl.AbstractJsonChallenge;
-import com.lenahartmann00.morpheus_challenges.logic.gson.lists.impl.JsonListKLong;
-import com.lenahartmann00.morpheus_challenges.logic.gson.tokens.impl.JsonTokenInt;
+import com.lenahartmann00.morpheus_challenges.model.json.lists.impl.JsonListKLong;
+import com.lenahartmann00.morpheus_challenges.model.json.tokens.impl.JsonTokenInt;
 
 public class Challenge2 extends AbstractJsonChallenge<JsonListKLong, JsonTokenInt> {
 
@@ -11,7 +11,7 @@ public class Challenge2 extends AbstractJsonChallenge<JsonListKLong, JsonTokenIn
 	}
 
 	@Override
-	protected JsonTokenInt solveChallenge(JsonListKLong challenge) {
+	public JsonTokenInt solveChallenge(JsonListKLong challenge) {
 		final int index = challenge.getList().indexOf(challenge.getK());
 		return new JsonTokenInt(index);
 	}

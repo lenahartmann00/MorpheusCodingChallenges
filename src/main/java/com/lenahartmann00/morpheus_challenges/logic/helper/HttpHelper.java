@@ -4,14 +4,16 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Helper class that is responsible for sending http requests to the server.
  */
 public final class HttpHelper {
 
+	private static final Logger LOGGER = Logger.getLogger(HttpHelper.class.getName());
 	private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
 
 	private HttpHelper() {
@@ -27,9 +29,9 @@ public final class HttpHelper {
 		throws IOException, InterruptedException {
 		final HttpRequest request = HttpRequest.newBuilder()
 			.uri(URI.create(UrlHelper.getChallengeUrl(challengeNumber)))
+			.GET()
 			.build();
-		return HTTP_CLIENT.send(request, BodyHandlers.ofString())
-			.body();
+		return sendRequest(request);
 	}
 
 	/**
@@ -47,8 +49,30 @@ public final class HttpHelper {
 			.uri(URI.create(UrlHelper.getSolutionUrl(challengeNumber)))
 			.POST(HttpRequest.BodyPublishers.ofString(solutionJson))
 			.build();
-		return HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString())
-			.body();
+		return sendRequest(request);
+	}
+
+	/**
+	 * Send the given {@code request} to the server. If the {@code request} is interrupted it tries
+	 * sending it again after waiting one second. If it is still interrupted it throws the {@link
+	 * InterruptedException}.
+	 *
+	 * @param request request that should be send
+	 * @return response of the server
+	 * @throws IOException          when an I/O error occurred while sending
+	 * @throws InterruptedException when the second request is also interrupted
+	 */
+	private static String sendRequest(final HttpRequest request)
+		throws IOException, InterruptedException {
+		try {
+			return HTTP_CLIENT.send(request, BodyHandlers.ofString()).body();
+		} catch (InterruptedException e) {
+			LOGGER.log(Level.WARNING, "GET request for challenge {0} has been interrupted");
+			Thread.currentThread().interrupt();
+			// Wait a second, then try again. If still interrupted throw the exception.
+			Thread.sleep(1000);
+			return HTTP_CLIENT.send(request, BodyHandlers.ofString()).body();
+		}
 	}
 
 

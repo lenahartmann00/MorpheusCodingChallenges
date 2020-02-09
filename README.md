@@ -46,7 +46,7 @@ not having to write the same methods over and over again that are responsible fo
 
 - #### `JsonModel`
     Interface that's used for the generic type of `AbstractChallenge` where this type has to represent a 
-    json model class. It's implementations can be found in the same package (com.lenahartmann00.morpheus_challenges.logic.gson) 
+    json model class. It's implementations can be found in the same package (com.lenahartmann00.morpheus_challenges.model.json) 
 
 
 ### Package structure

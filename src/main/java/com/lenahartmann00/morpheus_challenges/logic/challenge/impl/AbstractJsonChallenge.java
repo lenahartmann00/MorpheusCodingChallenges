@@ -2,9 +2,11 @@ package com.lenahartmann00.morpheus_challenges.logic.challenge.impl;
 
 import com.google.gson.GsonBuilder;
 import com.lenahartmann00.morpheus_challenges.logic.challenge.AbstractChallenge;
-import com.lenahartmann00.morpheus_challenges.logic.gson.JsonModel;
+import com.lenahartmann00.morpheus_challenges.model.json.JsonModel;
 import com.lenahartmann00.morpheus_challenges.logic.helper.HttpHelper;
 import java.io.IOException;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
 
 /**
  * Represents a {@link AbstractChallenge} where the receiving challenge from the server is send in
@@ -15,6 +17,7 @@ import java.io.IOException;
  * @param <S> model class that represents the JSON object that is send to the server when sending
  *            the POST request (solution) for the challenge
  */
+@State(Scope.Benchmark)
 public abstract class AbstractJsonChallenge<C extends JsonModel, S extends JsonModel>
 	extends AbstractChallenge<C, S> {
 
@@ -38,13 +41,5 @@ public abstract class AbstractJsonChallenge<C extends JsonModel, S extends JsonM
 		return new GsonBuilder().create()
 			.fromJson(jsonChallenge, challengeClass);
 	}
-
-	/**
-	 * This method should solve the challenge and return the solution in the given Json format.
-	 *
-	 * @param challenge received challenge object
-	 * @return solution object that should be send to the server
-	 */
-	protected abstract S solveChallenge(C challenge);
 
 }
